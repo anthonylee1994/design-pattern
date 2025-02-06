@@ -3,7 +3,7 @@ package learn.behavioral.chain.of.responsibility.account;
 /**
  * @author anthonylee
  */
-abstract class Account {
+public abstract class Account {
     protected Account successor;
     protected String name;
     protected int balance;
