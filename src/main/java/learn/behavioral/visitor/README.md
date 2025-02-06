@@ -1,28 +1,81 @@
-這是一個使用 Visitor Pattern (訪問者模式) 的 Java 範例，主要用於對不同動物類型執行不同操作。結構說明：
+# 訪問者模式（Visitor Pattern）示例
 
-1. **核心組成**：
+此示例展示了訪問者設計模式的實現，通過動物園的例子來說明如何使用訪問者模式來處理不同動物的行為。
 
-- 🐒 動物介面 `Animal` 定義了 `accept()` 方法
-- 👨💻 訪問者介面 `AnimalVisitor` 包含各動物類型的 visit 方法
-- 具體動物類：`Monkey`/`Lion`/`Dolphin` 各自實現特有行為
+## 類別結構
 
-2. **運作流程**：
+### 動物介面和實現類
 
-```java:src/main/java/learn/Main.java
-animal.accept(new SpeakVisitor()); // 觸發對應動物的訪問邏輯
-animal.accept(new JumpVisitor());
-```
+1. `Animal.java`
 
-3. **設計模式特點**：
+   - 定義了基本的動物介面
+   - 包含 `getName()` 方法獲取動物名稱
+   - 包含 `accept(AnimalVisitor visitor)` 方法接受訪問者
 
-- 雙重分派 (Double Dispatch)：透過 accept() + visit() 的組合實現
-- 符合開放封閉原則：新增操作只需加 Visitor，不需改動物類
-- 行為集中化：將散落在各動物類的行為邏輯集中到 Visitor 中
+2. `Dolphin.java`
 
-4. **範例行為**：
+   - 實現 `Animal` 介面的海豚類
+   - 具有特定的 `speak()` 方法發出聲音
+   - 名稱為「海豚」
 
-- `SpeakVisitor` 處理動物叫聲
-- `JumpVisitor` 處理跳躍行為
-- 輸出結果會顯示中文的動物名稱和對應行為
+3. `Lion.java`
 
-這個架構方便擴展新操作(如新增 SwimVisitor)，但新增動物類型時需要修改所有現有 Visitor，這是訪問者模式的典型 trade-off。
+   - 實現 `Animal` 介面的獅子類
+   - 具有特定的 `roar()` 方法發出吼叫
+   - 名稱為「獅子」
+
+4. `Monkey.java`
+   - 實現 `Animal` 介面的猴子類
+   - 具有特定的 `shout()` 方法發出叫聲
+   - 名稱為「猴子」
+
+### 訪問者介面和實現類
+
+1. `AnimalVisitor.java`
+
+   - 定義訪問者介面
+   - 為每種動物類型提供對應的 `visit()` 方法
+
+2. `JumpVisitor.java`
+
+   - 實現 `AnimalVisitor` 介面
+   - 處理各種動物的跳躍行為
+   - 每種動物都有不同的跳躍表現：
+     - 猴子跳 20 英尺高到樹上
+     - 獅子跳 7 英尺高後落地
+     - 海豚短暫露出水面
+
+3. `SpeakVisitor.java`
+   - 實現 `AnimalVisitor` 介面
+   - 處理各種動物的發聲行為
+   - 調用各個動物類中的特定發聲方法
+
+### 示例程式
+
+`VisitorDemo.java`
+
+- 創建不同類型的動物實例
+- 使用 `SpeakVisitor` 和 `JumpVisitor` 訪問每個動物
+- 展示如何通過訪問者模式執行不同的行為
+
+## 設計模式說明
+
+訪問者模式允許我們：
+
+1. 將數據結構和數據操作分離
+2. 在不修改現有類的情況下添加新的操作
+3. 集中相關的操作並將不相關的操作分離
+
+在這個例子中：
+
+- 動物類（`Dolphin`、`Lion`、`Monkey`）專注於基本屬性和行為
+- 訪問者類（`SpeakVisitor`、`JumpVisitor`）處理特定的行為邏輯
+- 可以輕鬆添加新的訪問者來實現新的行為，而無需修改現有的動物類
+
+## 執行結果
+
+當運行 `VisitorDemo` 時，將會看到：
+
+1. 每個動物發出特定的聲音
+2. 每個動物展示特定的跳躍行為
+3. 按照猴子、獅子、海豚的順序顯示結果
