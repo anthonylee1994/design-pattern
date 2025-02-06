@@ -1,6 +1,6 @@
-package learn.visitor.animal;
+package learn.behavioral.visitor.animal;
 
-import learn.visitor.visitor.AnimalVisitor;
+import learn.behavioral.visitor.visitor.AnimalVisitor;
 
 /**
  * @author anthonylee

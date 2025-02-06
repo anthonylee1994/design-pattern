@@ -1,8 +1,8 @@
-package learn.visitor.visitor;
+package learn.behavioral.visitor.visitor;
 
-import learn.visitor.animal.Dolphin;
-import learn.visitor.animal.Lion;
-import learn.visitor.animal.Monkey;
+import learn.behavioral.visitor.animal.Dolphin;
+import learn.behavioral.visitor.animal.Lion;
+import learn.behavioral.visitor.animal.Monkey;
 
 /**
  * @author anthonylee

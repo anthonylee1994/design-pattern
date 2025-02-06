@@ -1,11 +1,11 @@
 package learn;
 
-import learn.visitor.animal.Animal;
-import learn.visitor.animal.Dolphin;
-import learn.visitor.visitor.JumpVisitor;
-import learn.visitor.animal.Lion;
-import learn.visitor.animal.Monkey;
-import learn.visitor.visitor.SpeakVisitor;
+import learn.behavioral.visitor.animal.Animal;
+import learn.behavioral.visitor.animal.Dolphin;
+import learn.behavioral.visitor.visitor.JumpVisitor;
+import learn.behavioral.visitor.animal.Lion;
+import learn.behavioral.visitor.animal.Monkey;
+import learn.behavioral.visitor.visitor.SpeakVisitor;
 
 import java.util.List;
 
