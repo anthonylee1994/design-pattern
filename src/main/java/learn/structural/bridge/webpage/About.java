@@ -5,9 +5,11 @@ import learn.structural.bridge.theme.Theme;
 /**
  * @author anthonylee
  */
-public class About extends WebPage {
+public class About implements WebPage {
+    private final Theme theme;
+
     public About(Theme theme) {
-        super(theme);
+        this.theme = theme;
     }
 
     @Override
