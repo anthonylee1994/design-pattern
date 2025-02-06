@@ -3,16 +3,18 @@ package learn.structural.decorator.coffee;
 /**
  * @author anthonylee
  */
-public class MilkCoffee extends CoffeeDecorator {
+public class MilkCoffee implements Coffee {
+    private final Coffee coffee;
+
     public MilkCoffee(Coffee coffee) {
-        super(coffee);
+        this.coffee = coffee;
     }
 
     public int getCost() {
-        return decoratedCoffee.getCost() + 2;
+        return coffee.getCost() + 2;
     }
 
     public String getDescription() {
-        return decoratedCoffee.getDescription() + "，加奶";
+        return coffee.getDescription() + "，加奶";
     }
 }
